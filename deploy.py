@@ -37,12 +37,16 @@ bytecode = compiled_sol["contracts"]["SimpleStorage.sol"]["SimpleStorage"]["evm"
 abi = compiled_sol["contracts"]["SimpleStorage.sol"]["SimpleStorage"]["abi"]
 
 # for connecting to local blockchain
-w3 = Web3(Web3.HTTPProvider("HTTP://127.0.0.1:8545"))
-
-# blockchain ID
+w3 = Web3(Web3.HTTPProvider("HTTP://127.0.0.1:8545"))  # local blockchain
 chain_id = 1337
 my_address = "0x5EFAE126AE357Da5B5e3AC7C52B073706de5bD91"
 private_key = os.getenv("PRIVATE_KEY")
+
+# for connecting to infura ethereum rinkeby testnet
+# w3 = Web3(Web3.HTTPProvider("https://rinkeby.infura.io/v3/fab85e5649974097899220c9d73bfb04")) #infura eth blockchain
+# chain_id = 4
+# my_address = "NAN"
+# private_key = os.getenv("PRIVATE_KEY_TESTNET")
 
 # Create the contract in python
 SimpleStorage = w3.eth.contract(abi=abi, bytecode=bytecode)
